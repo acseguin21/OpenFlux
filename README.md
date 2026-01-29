@@ -9,6 +9,10 @@ OpenCode is a community-driven, privacy-first alternative to Cursor. Our mission
 - **Local-First RAG**: High-performance codebase indexing that stays on your machine.
 - **Community Owned**: No hidden trackers, no proprietary "secret sauce" edit models.
 
+## 🌌 The Aesthetic: Neo-Tactical (SV 2026)
+
+OpenCode follows a **Neo-Tactical** design language: Deep Obsidian backgrounds, Hyper-Blue accents, and a focus on high-density, high-agency UI. It feels less like a text editor and more like a **Strategic Command Center** for AI orchestration.
+
 ## 📂 Project Structure
 
 - `core/`: High-performance backends for indexing and agent orchestration.
