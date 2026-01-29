@@ -1,0 +1,10 @@
+node_modules/
+build/
+dist/
+.DS_Store
+*.log
+.env
+out/
+.vscode-test/
+*.vsix
+bin/
