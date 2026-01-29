@@ -9,6 +9,15 @@ OpenCode is a community-driven, privacy-first alternative to Cursor. Our mission
 - **Local-First RAG**: High-performance codebase indexing that stays on your machine.
 - **Community Owned**: No hidden trackers, no proprietary "secret sauce" edit models.
 
+## 📂 Project Structure
+
+- `core/`: High-performance backends for indexing and agent orchestration.
+- `shell/`: Patches and branding for the custom VSCodium distribution.
+- `extensions/`: Bundled VS Code extensions that provide the AI UI.
+- `scripts/`: Automation for building binaries and setting up development environments.
+- `docs/`: Technical specifications and API documentation.
+- `tests/`: Integration and unit tests for the AI loop.
+
 ## 🛠️ Architecture
 
 OpenCode is designed as an ecosystem of best-in-class open-source tools:

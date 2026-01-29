@@ -1,0 +1,37 @@
+{
+  "name": "opencode-ai-tools",
+  "displayName": "OpenCode AI Tools",
+  "description": "Core AI capabilities for the OpenCode IDE, including context retrieval and agent orchestration.",
+  "version": "0.1.0",
+  "publisher": "opencode",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "AI",
+    "Machine Learning"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "opencode.indexCodebase",
+        "title": "OpenCode: Index Codebase"
+      },
+      {
+        "command": "opencode.startAgent",
+        "title": "OpenCode: Start Autonomous Agent"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "opencode-explorer",
+          "title": "OpenCode AI",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    }
+  }
+}
