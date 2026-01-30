@@ -1,0 +1,97 @@
+# Phase 4: Build OpenCode and create GitHub Release on tag push (e.g. v1.0.0).
+# Each OS builds the shell + bundles extensions, then packages artifacts. Release job uploads all to the tag.
+# To add Windows: add windows-latest to matrix and install WiX/VS build tools per upstream howto-build.
+
+name: Release OpenCode
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+env:
+  # Strip 'v' for artifact names (e.g. v1.0.0 -> 1.0.0)
+  OPENCODE_VERSION: ${{ github.ref_name }}
+
+jobs:
+  build:
+    name: build-${{ matrix.os }}
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-14
+            os: darwin
+          - runner: ubuntu-22.04
+            os: linux
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install jq
+        run: |
+          if command -v brew >/dev/null 2>&1; then brew install jq; else sudo apt-get update && sudo apt-get install -y jq; fi
+
+      - name: Install Rust (Linux)
+        if: matrix.os == 'linux'
+        uses: dtolnay/rust-action@stable
+
+      - name: Build OpenCode shell
+        run: bash shell/scripts/clone_and_build.sh
+        env:
+          OPENCODE_VERSION: ${{ env.OPENCODE_VERSION }}
+
+      - name: Package release artifacts
+        run: bash shell/scripts/package_release_artifacts.sh
+        env:
+          OPENCODE_VERSION: ${{ env.OPENCODE_VERSION }}
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-${{ matrix.os }}
+          path: .build/opencode-shell/release/
+          retention-days: 5
+
+  release:
+    name: Create release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: OpenCode ${{ github.ref_name }}
+          body: |
+            **OpenCode by VibeCoders United** — standalone AI IDE built from open source.
+            Download the archive for your platform and extract. See [docs/BACKEND.md](https://github.com/${{ github.repository }}/blob/${{ github.ref_name }}/docs/BACKEND.md) for running the backend.
+          files: artifacts/*
+          draft: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

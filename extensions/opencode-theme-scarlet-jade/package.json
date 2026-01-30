@@ -1,0 +1,22 @@
+{
+  "name": "opencode-theme-scarlet-jade",
+  "displayName": "OpenCode Scarlet & Jade",
+  "description": "Scarlet and Jade accent colors with neutral tones. VibeCoders United.",
+  "version": "0.1.0",
+  "publisher": "opencode",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "OpenCode Scarlet & Jade (Dark)",
+        "uiTheme": "vs-dark",
+        "path": "./themes/scarlet-jade-color-theme.json"
+      }
+    ]
+  }
+}

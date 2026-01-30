@@ -1,0 +1,36 @@
+# OpenCode Ignore File
+# Files and directories matching these patterns will not be indexed
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+.pytest_cache/
+
+# Build outputs
+dist/
+build/
+out/
+*.egg-info/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Git
+.git/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment
+.env
+.env.local

@@ -1,41 +1,70 @@
-# OpenCode: Design & Branding Identity (SV 2026 Edition)
+# VibeCoders United: Design & Branding Identity
 
-Welcome to the future. OpenCode isn't just a tool; it's the "Tactical Command Center" for the AI-Native developer.
+**VibeCoders United** is the overarching organization. Our product is a **standalone IDE application** (similar to commercial standalone AI IDEs)—built entirely from **open-source projects** that can be pulled and built from GitHub. No vendor lock-in; full control and community ownership.
 
-## 🎨 The Aesthetic: "Neo-Tactical"
+---
 
-In 2026, Silicon Valley has moved past the "Clean & Minimal" look. Everything is now high-fidelity, high-density, and tactile.
+## 🎨 The Aesthetic: "Scarlet & Jade"
 
-### 🌓 The Color Palette: "Obsidian & Neon"
-- **Primary Base**: `#0A0A0B` (Deep Space Black) - More ink, less grey.
-- **Accents**: 
-  - `#00FF9C` (Bio-Digital Green) - For "Success" and "Agent Running" states.
-  - `#FF006E` (Synthetic Magenta) - For "Warning" and "Manual Override."
-  - `#3A86FF` (Hyper-Blue) - For "Context Suggestions" and "AI Thinking."
-- **Glassmorphism**: 15% opacity overlays with heavy `backdrop-filter: blur(20px)` for all floating panels.
+Accent colours are **Scarlet** and **Jade**, with **complementary neutral tones** that keep the focus on the accents. The result is bold, recognizable, and easy on the eyes.
+
+### 🌓 The Color Palette: "Scarlet, Jade & Neutrals"
+
+- **Accent – Scarlet**: `#C41E3A` (primary scarlet) — Actions, warnings, emphasis, and "manual override" states.
+- **Accent – Jade**: `#0D9488` (jade/teal) — Success, "agent running," indexing complete, and positive feedback.
+- **Neutral base (dark)**: `#1C1917` (Stone 900) — Main background; warm neutral that makes scarlet and jade stand out.
+- **Neutral surface**: `#292524` (Stone 800) — Panels, sidebars, and elevated surfaces.
+- **Neutral muted**: `#57534E` (Stone 500) — Borders, secondary text, and subtle UI.
+- **Neutral highlight**: `#F5F5F4` (Stone 100) — Primary text on dark; ensures readability.
+- **Glassmorphism**: 12–15% opacity overlays with `backdrop-filter: blur(20px)` for floating panels so accents stay visible.
+
+Use **Scarlet** for primary CTAs and critical states; use **Jade** for success, progress, and AI/agent activity. Neutrals carry the rest of the UI.
+
+**Design tokens (copy-paste):**
+
+| Token        | Hex       | Use                    |
+|-------------|-----------|------------------------|
+| `--accent-scarlet` | `#C41E3A` | Primary actions, warnings |
+| `--accent-jade`    | `#0D9488` | Success, agent, indexing  |
+| `--neutral-base`   | `#1C1917` | Main background          |
+| `--neutral-surface`| `#292524` | Panels, sidebars          |
+| `--neutral-muted`  | `#57534E` | Borders, secondary text  |
+| `--neutral-highlight` | `#F5F5F4` | Primary text on dark  |
 
 ### ⌨️ Typography: "Variable Brutalism"
-- **UI Font**: `JetBrains Mono` or `Inter Variable` (High contrast, tight tracking).
-- **Code Font**: `Berkeley Mono` or `Input Mono` (Custom-ligature-heavy).
+
+- **UI Font**: `JetBrains Mono` or `Inter Variable` (high contrast, tight tracking).
+- **Code Font**: `Berkeley Mono` or `Input Mono` (custom ligatures, optimized for code).
 
 ---
 
 ## 🏗️ UI Components: "The Bento Shell"
 
-OpenCode uses a **Bento Grid** layout for metadata, while the code remains a "Sacred Canvas."
+The IDE uses a **Bento Grid** layout for metadata; the editor remains the main canvas.
 
-1. **The Ghost Terminal**: A semi-transparent overlay at the bottom that shows the AI "thinking" in real-time logs.
-2. **The Context Orb**: A pulsating 3D glow in the status bar that changes color based on how well the AI "understands" the current file (Green = Fully Indexed, Yellow = Partial, Blue = Indexing).
-3. **The Shadow Diff**: Instead of red/green blocks, changes appear as "Ghost Text" with a subtle glow that fades in when the AI proposes an edit.
+1. **The Ghost Terminal**: Semi-transparent overlay at the bottom showing AI "thinking" and logs in real time. Neutrals for background; Jade for active/streaming state.
+2. **The Context Orb**: Status bar indicator that changes colour by indexing state — **Jade** = fully indexed, **Scarlet** = needs attention or manual override, neutral = indexing or idle.
+3. **The Shadow Diff**: Changes appear as subtle "ghost" text with a soft glow (Jade tint for additions, Scarlet tint for removals where appropriate), fading in when the AI proposes an edit.
 
 ---
 
 ## ⚡ The Vibe: "High-Agency & Transparent"
 
-- **Tactile Sound Effects**: Subtle, low-frequency clicks when the AI accepts a goal. No high-pitched beeps.
-- **Terminal First**: Everything the AI does is logged in a "History" tab that looks like a mission-critical flight recorder.
-- **No Mystery**: Every "Magic" action has a "Show Source" button that reveals the exact prompt and context used.
+- **Tactile feedback**: Low-frequency clicks when the AI accepts a goal; no high-pitched beeps.
+- **Terminal first**: All AI actions are logged in a History tab that feels like a flight recorder.
+- **No mystery**: Every "magic" action has a "Show Source" button revealing the exact prompt and context.
 
 ---
 
-*“Coding is no longer about writing lines; it’s about directing a symphony of agents. OpenCode is your baton.”*
+## 🏢 Organization & Product
+
+| | |
+|---|---|
+| **Organization** | **VibeCoders United** |
+| **Product** | Standalone IDE application (single-product experience) |
+| **Foundation** | Open-source projects; pull and build from GitHub |
+| **Mission** | World-class AI coding without vendor lock-in or hidden telemetry |
+
+---
+
+*"Coding is no longer about writing lines; it's about directing a symphony of agents. VibeCoders United is your baton."*

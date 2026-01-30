@@ -25,6 +25,11 @@
     "typescript": "^5.0.0",
     "esbuild": "^0.20.0"
   },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
   "contributes": {
     "commands": [
       {
@@ -34,8 +39,48 @@
       {
         "command": "opencode.startAgent",
         "title": "OpenCode: Start Autonomous Agent"
+      },
+      {
+        "command": "opencode.searchCodebase",
+        "title": "OpenCode: Search Codebase"
+      },
+      {
+        "command": "opencode.showBackendInstructions",
+        "title": "OpenCode: Show backend instructions"
+      },
+      {
+        "command": "opencode.showWelcome",
+        "title": "OpenCode: Show Welcome"
+      },
+      {
+        "command": "opencode.openDocumentation",
+        "title": "OpenCode: Open Documentation"
+      },
+      {
+        "command": "opencode.openComposer",
+        "title": "OpenCode: Open Composer"
       }
     ],
+    "configuration": {
+      "title": "OpenCode",
+      "properties": {
+        "opencode.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "URL of the OpenCode API server"
+        },
+        "opencode.useOllama": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use Ollama for local embeddings and models"
+        },
+        "opencode.embeddingModel": {
+          "type": "string",
+          "default": "nomic-embed-text",
+          "description": "Ollama model to use for embeddings"
+        }
+      }
+    },
     "viewsContainers": {
       "activitybar": [
         {

@@ -1,5 +1,6 @@
 node_modules/
 build/
+.build/
 dist/
 .DS_Store
 *.log
@@ -8,3 +9,8 @@ out/
 .vscode-test/
 *.vsix
 bin/
+.lafufu/
+.lafufu/*
+__pycache__/
+*.pyc
+venv/

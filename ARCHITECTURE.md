@@ -1,15 +1,15 @@
 # OpenCode Architecture & Technical Strategy
 
-To build a rival to Cursor as a startup, we must leverage the "Giant's Shoulders" of existing open-source software while adding a unique layer of **Agentic Orchestration** and **Superior Context**.
+To build a standalone AI IDE, we leverage the "Giant's Shoulders" of existing open-source software while adding a unique layer of **Agentic Orchestration** and **Superior Context**.
 
-## 1. The Editor Shell (VSCodium Fork)
+## 1. The Editor Shell (Open Editor Base)
 
-We will use **VSCodium** as our base. VSCodium is a community-driven, telemetry-free distribution of Microsoft's VS Code.
+We use an **open editor base** (a community-driven, telemetry-free Code-compatible build) as our foundation.
 
-### Why VSCodium?
+### Why an open editor base?
 - **Extension Compatibility**: We retain access to the 50,000+ extensions in the Open VSX Registry.
 - **License**: MIT-licensed source code allows us to fork and modify the UI (for things like the "Composer" or "Tab" features).
-- **Clean Slate**: No Microsoft telemetry or proprietary license restrictions.
+- **Clean Slate**: No upstream vendor telemetry or proprietary license restrictions.
 
 ## 2. The AI Engine (The Brain)
 
@@ -43,7 +43,7 @@ OpenCode will integrate a "Shadow Terminal" and "Test Runner."
 
 | Phase | Milestone | Tools |
 |-------|-----------|-------|
-| 1 | **MVP Shell** | VSCodium + Continue extension bundled |
+| 1 | **MVP Shell** | Open editor base + compatible extensions bundled |
 | 2 | **Local Indexing** | Tree-sitter + local vector DB |
-| 3 | **Custom UI** | Forking VSCodium to add "Ghost Text" and "Composer" |
+| 3 | **Custom UI** | Forking the editor base to add "Ghost Text" and "Composer" |
 | 4 | **Agentic Loop** | Integrated terminal/test-runner feedback |

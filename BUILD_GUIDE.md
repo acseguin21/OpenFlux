@@ -4,9 +4,9 @@ This guide outlines how to build your own version of OpenCode from source or set
 
 ## Option 1: The "Pro-Extension" Kit (Fastest)
 
-If you don't want to manage a full VS Code fork yet, you can turn VSCodium into OpenCode using our bundled configuration.
+If you don't want to manage a full editor fork yet, you can use a Code-compatible editor (e.g. from your package manager) with our bundled configuration.
 
-1. **Install VSCodium**: `brew install --cask vscodium` (macOS)
+1. **Install a Code-compatible editor**: e.g. `brew install --cask vscodium` (macOS) or use the built OpenCode app from this repo.
 2. **Install Ollama**: [ollama.com](https://ollama.com)
 3. **Pull Models**:
    ```bash
@@ -30,11 +30,11 @@ To create a standalone binary with custom branding and UI components.
 
 ### Steps
 
-1. **Fork VSCodium**:
+1. **Clone the upstream editor** (see `shell/README.md` for the recommended build; the script clones the upstream repo and applies our patches):
    ```bash
-   git clone https://github.com/VSCodium/vscodium.git
-   cd vscodium
+   ./shell/scripts/clone_and_build.sh   # from repo root
    ```
+   Or manually: clone the upstream Code-compatible editor repo, then apply OpenCode patches from `shell/patches/`.
 2. **Apply OpenCode Patches**:
    Our patches modify `src/vs/workbench/contrib` to add the custom AI sidecar and Composer UI.
    ```bash

@@ -10,6 +10,14 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
+# Try to install optional language parsers
+echo "📚 Installing optional language parsers..."
+if pip install -r requirements-optional.txt 2>/dev/null; then
+    echo "✓ Language parsers installed"
+else
+    echo "⚠ Language parsers optional (code will work without them)"
+fi
+
 # Setup Extension
 echo "📦 Setting up Node.js Extension..."
 cd extensions/opencode-ai-tools

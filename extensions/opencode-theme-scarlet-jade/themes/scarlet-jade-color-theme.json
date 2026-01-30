@@ -1,0 +1,83 @@
+{
+  "name": "OpenCode Scarlet & Jade",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#1C1917",
+    "editor.foreground": "#F5F5F4",
+    "activityBar.background": "#1C1917",
+    "activityBar.foreground": "#F5F5F4",
+    "activityBarBadge.background": "#0D9488",
+    "sideBar.background": "#292524",
+    "sideBar.foreground": "#F5F5F4",
+    "sideBarTitle.foreground": "#F5F5F4",
+    "sideBarSectionHeader.background": "#292524",
+    "sideBarSectionHeader.foreground": "#57534E",
+    "titleBar.activeBackground": "#292524",
+    "titleBar.activeForeground": "#F5F5F4",
+    "statusBar.background": "#292524",
+    "statusBar.foreground": "#F5F5F4",
+    "statusBar.noFolderBackground": "#292524",
+    "statusBar.debuggingBackground": "#C41E3A",
+    "statusBarItem.hoverBackground": "#57534E",
+    "statusBarItem.remoteBackground": "#0D9488",
+    "tab.activeBackground": "#292524",
+    "tab.activeForeground": "#F5F5F4",
+    "tab.inactiveBackground": "#1C1917",
+    "tab.inactiveForeground": "#57534E",
+    "focusBorder": "#0D9488",
+    "button.background": "#0D9488",
+    "button.foreground": "#F5F5F4",
+    "button.hoverBackground": "#0F766E",
+    "input.background": "#292524",
+    "input.foreground": "#F5F5F4",
+    "input.border": "#57534E",
+    "inputOption.activeBorder": "#0D9488",
+    "list.activeSelectionBackground": "#57534E",
+    "list.activeSelectionForeground": "#F5F5F4",
+    "list.hoverBackground": "#292524",
+    "list.inactiveSelectionBackground": "#292524",
+    "editorWidget.background": "#292524",
+    "editorWidget.border": "#57534E",
+    "editorSuggestWidget.background": "#292524",
+    "editorSuggestWidget.border": "#57534E",
+    "editorSuggestWidget.foreground": "#F5F5F4",
+    "editorSuggestWidget.highlightForeground": "#0D9488",
+    "editorError.foreground": "#C41E3A",
+    "editorWarning.foreground": "#C41E3A",
+    "editorInfo.foreground": "#0D9488",
+    "editorGutter.addedBackground": "#0D9488",
+    "editorGutter.deletedBackground": "#C41E3A",
+    "editorIndentGuide.background": "#57534E",
+    "editorRuler.foreground": "#57534E"
+  },
+  "tokenColors": [
+    {
+      "scope": ["comment", "punctuation.definition.comment"],
+      "settings": { "foreground": "#57534E" }
+    },
+    {
+      "scope": ["string"],
+      "settings": { "foreground": "#0D9488" }
+    },
+    {
+      "scope": ["keyword", "storage.type", "storage.modifier"],
+      "settings": { "foreground": "#C41E3A" }
+    },
+    {
+      "scope": ["entity.name.function", "support.function"],
+      "settings": { "foreground": "#0D9488" }
+    },
+    {
+      "scope": ["constant.numeric", "constant.language"],
+      "settings": { "foreground": "#F5F5F4" }
+    },
+    {
+      "scope": ["variable", "entity.name"],
+      "settings": { "foreground": "#F5F5F4" }
+    },
+    {
+      "scope": ["invalid", "invalid.illegal"],
+      "settings": { "foreground": "#C41E3A" }
+    }
+  ]
+}
