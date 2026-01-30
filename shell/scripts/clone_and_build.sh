@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Build OpenCode standalone IDE from the upstream editor (Code-compatible source).
-# Run from the mystery-machine repo root, or from shell/scripts (repo root is auto-detected).
+# Run from the OpenCode repo root, or from shell/scripts (repo root is auto-detected).
 
 set -e
 

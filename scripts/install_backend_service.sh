@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Install OpenCode backend as a macOS user LaunchAgent (starts at login).
-# Run from the mystery-machine repo root. Uninstall: launchctl unload ~/Library/LaunchAgents/com.vibecoders.opencode.backend.plist
+# Run from the OpenCode repo root. Uninstall: launchctl unload ~/Library/LaunchAgents/com.vibecoders.opencode.backend.plist
 
 set -e
 

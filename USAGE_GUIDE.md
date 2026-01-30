@@ -7,7 +7,7 @@
 Open a terminal and run:
 
 ```bash
-cd /Users/andreseguin/code/mystery-machine
+cd /path/to/opencode
 ./scripts/start_server.sh
 ```
 
@@ -24,7 +24,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000
 Open a **new terminal** and run:
 
 ```bash
-cd /Users/andreseguin/code/mystery-machine/extensions/opencode-ai-tools
+cd /path/to/opencode/extensions/opencode-ai-tools
 npm install
 npm run compile
 ```
@@ -35,7 +35,7 @@ This builds the TypeScript extension code.
 
 1. Open a Code-compatible editor in the project directory:
    ```bash
-   cd /Users/andreseguin/code/mystery-machine
+   cd /path/to/opencode
    code .   # or open the folder in your editor
    ```
 

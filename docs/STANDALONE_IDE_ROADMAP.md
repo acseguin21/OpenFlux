@@ -155,7 +155,7 @@ This document outlines what’s needed to turn OpenCode into a **standalone desk
 ## Suggested Repo Layout After Phase 1–2
 
 ```text
-mystery-machine/
+opencode/
 ├── core/                    # Backend (API, indexer, orchestrator)
 ├── extensions/               # Editor extensions (opencode-ai-tools, etc.)
 ├── shell/                   # NEW: Everything for the standalone shell

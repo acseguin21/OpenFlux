@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
-export const REPO_DOCS = "https://github.com/VibeCodersUnited/mystery-machine#readme";
-export const BACKEND_DOCS = "https://github.com/VibeCodersUnited/mystery-machine/blob/master/docs/BACKEND.md";
+export const REPO_DOCS = "https://github.com/acseguin21/opencode#readme";
+export const BACKEND_DOCS = "https://github.com/acseguin21/opencode/blob/master/docs/BACKEND.md";
 
 export function getWelcomeHtml(): string {
     return `<!DOCTYPE html>

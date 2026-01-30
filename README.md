@@ -13,7 +13,7 @@
 **Clone and run** (one line; replace the URL if your fork is elsewhere):
 
 ```bash
-git clone https://github.com/VibeCodersUnited/mystery-machine.git opencode && cd opencode && ./scripts/install_and_run.sh
+git clone https://github.com/acseguin21/opencode.git opencode && cd opencode && ./scripts/install_and_run.sh
 ```
 
 That chains: clone → quick_start (venv, deps, extension build) → start_server (background). Backend at `http://localhost:8000`. See **`QUICKSTART.md`** for using the extension.
@@ -82,3 +82,5 @@ See **`docs/BACKEND.md`** for manual start, Linux systemd, and packaging the bac
 ---
 
 *This is a work in progress. Join us in building the future of open-source development.*
+
+<sub>open-source · AI IDE · BYOK · Ollama · local-first · code editor · semantic search · privacy</sub>

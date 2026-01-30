@@ -28,7 +28,7 @@ Get OpenCode up and running in minutes!
 
 1. **Clone and setup Python environment**
    ```bash
-   cd mystery-machine
+   cd opencode
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    pip install -r requirements.txt
@@ -142,7 +142,6 @@ export OPENCODE_VERIFICATION_MODEL="llama3.1:8b"
 
 - Read [INTEGRATION.md](./INTEGRATION.md) for architecture details
 - Read [ARCHITECTURE.md](./ARCHITECTURE.md) for design decisions
-- Check [.lafufu/README.md](./.lafufu/README.md) for open-source components
 
 ## Contributing
 

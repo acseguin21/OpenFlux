@@ -1,0 +1,14 @@
+# Suggested GitHub topics (paste into repo About → Topics)
+# Kept in-repo for maintainers; add these on github.com for discoverability.
+
+ai
+open-source
+ide
+ollama
+code-editor
+local-first
+byok
+semantic-search
+vscode-extension
+python
+typescript

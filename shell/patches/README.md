@@ -13,7 +13,7 @@ Create patches from the upstream clone after making edits, e.g.:
 ```bash
 cd /path/to/upstream-clone
 # edit files...
-git diff --no-prefix > /path/to/mystery-machine/shell/patches/product-name.patch
+git diff --no-prefix > /path/to/opencode/shell/patches/product-name.patch
 ```
 
 Apply in build script with:

@@ -4,7 +4,7 @@ The OpenCode IDE talks to a **local API server** for indexing, search, and agent
 
 ## Quick start: run the backend manually
 
-From the **mystery-machine repo root** (or wherever you have the OpenCode source):
+From the **OpenCode repo root** (or wherever you have the OpenCode source):
 
 ```bash
 ./scripts/start_server.sh
@@ -21,7 +21,7 @@ The server will be at **http://localhost:8000**. The OpenCode extension is alrea
 ### Manual start (without the script)
 
 ```bash
-cd /path/to/mystery-machine
+cd /path/to/opencode
 python3 -m venv venv
 source venv/bin/activate   # Windows: venv\Scripts\activate
 pip install -r requirements.txt
@@ -56,8 +56,8 @@ After=network.target
 
 [Service]
 Type=simple
-WorkingDirectory=/path/to/mystery-machine
-ExecStart=/path/to/mystery-machine/venv/bin/python -m uvicorn core.api.server:app --host 127.0.0.1 --port 8000
+WorkingDirectory=/path/to/opencode
+ExecStart=/path/to/opencode/venv/bin/python -m uvicorn core.api.server:app --host 127.0.0.1 --port 8000
 Restart=on-failure
 RestartSec=5
 

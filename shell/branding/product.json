@@ -25,7 +25,7 @@
   "win32TunnelMutex": "opencode-tunnel",
   "win32ContextMenu.x64.clsid": "A7B8C9D0-E1F2-4A5B-8C9D-0E1F2A3B4C5D",
   "win32ContextMenu.arm64.clsid": "B8C9D0E1-F2A3-5B6C-9D0E-1F2A3B4C5D6E",
-  "licenseUrl": "https://github.com/VibeCodersUnited/mystery-machine/blob/master/LICENSE",
-  "reportIssueUrl": "https://github.com/VibeCodersUnited/mystery-machine/issues/new",
-  "downloadUrl": "https://github.com/VibeCodersUnited/mystery-machine/releases"
+  "licenseUrl": "https://github.com/acseguin21/opencode/blob/master/LICENSE",
+  "reportIssueUrl": "https://github.com/acseguin21/opencode/issues/new",
+  "downloadUrl": "https://github.com/acseguin21/opencode/releases"
 }
