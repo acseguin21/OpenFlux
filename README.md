@@ -1,22 +1,26 @@
 # OpenFlux: The Transparent, Open-Source AI IDE
 
-**Download OpenFlux** — standalone AI IDE, open source, build from GitHub. **VibeCoders United** is the organization behind OpenFlux: a single application (like popular subscription-based AI IDEs) built from **open-source projects** you can pull and build from GitHub. Community-driven, privacy-first, with no vendor lock-in or hidden telemetry.
+**Download OpenFlux** — standalone desktop app, open source, build from GitHub. **VibeCoders United** is the organization behind OpenFlux: one native window (like [OpenCode](https://opencode.ai/)) that connects to your OpenFlux backend. Community-driven, privacy-first, no vendor lock-in or hidden telemetry.
 
-## One-command install
+## Install: Desktop app (recommended)
 
-**From the repo root** (setup + backend in background):
-
-```bash
-./scripts/install_and_run.sh
-```
-
-**Clone and run** (one line; replace the URL if your fork is elsewhere):
+**One command** → DMG / .app / installer. No VSCode clone.
 
 ```bash
-git clone https://github.com/acseguin21/openflux.git openflux && cd openflux && ./scripts/install_and_run.sh
+cd desktop
+npm install
+npm run tauri build
 ```
 
-That chains: clone → quick_start (venv, deps, extension build) → start_server (background). Backend at `http://localhost:8000`. See **`QUICKSTART.md`** for using the extension.
+Output: `desktop/src-tauri/target/release/bundle/` — **macOS:** `.dmg` and `.app`; **Windows:** `.exe` installer; **Linux:** `.deb`, `.rpm`, AppImage. Double-click to run.
+
+Then start the backend (from repo root):
+
+```bash
+./scripts/start_server.sh
+```
+
+Open the app → set backend URL `http://localhost:8000` → **Connect** → use the composer. See **`desktop/README.md`** and **`QUICKSTART.md`**.
 
 ## 🚀 The Vision
 
@@ -43,21 +47,23 @@ OpenFlux uses **Scarlet** and **Jade** accent colours with **complementary neutr
 
 ## 📂 Project Structure
 
+- **`desktop/`**: **Tauri desktop app** — one window, composer + backend connection. **Primary install path** (DMG / .app / installers).
 - `core/`: High-performance backends for indexing and agent orchestration.
-- `shell/`: Patches and branding for the custom editor distribution.
-- `extensions/`: Bundled editor extensions that provide the AI UI.
-- `scripts/`: Automation for building binaries and setting up development environments.
+- `extensions/`: Editor extensions (use inside Cursor/VSCode or a Code-compatible editor).
+- `scripts/`: Backend and dev automation.
 - `docs/`: Technical specifications and API documentation.
 - `tests/`: Integration and unit tests for the AI loop.
+- `shell/`: **Deprecated** for installability — legacy Code-based IDE build; use `desktop/` for “download and open” instead.
 
 ## 🛠️ Architecture
 
 OpenFlux is designed as an ecosystem of best-in-class open-source tools:
 
-1. **The Shell**: A custom fork/distribution of an open editor base.
-2. **The Intelligence**: Powered by compatible AI extensions, integrated deeply into the IDE.
+1. **The Desktop App**: Tauri-native window (composer + backend URL). Download DMG → open → use.
+2. **The Backend**: Local API (indexing + agent) at `http://localhost:8000`.
 3. **The Indexer**: Semantic codebase search using Tree-sitter and vector embeddings.
 4. **The Runtime**: Support for [Ollama](https://ollama.com/) for a fully offline experience.
+5. **Optional**: Use **OpenFlux AI Tools** extension inside Cursor/VSCode for in-editor features.
 
 ## 📂 Repository Structure
 
@@ -66,9 +72,9 @@ OpenFlux is designed as an ecosystem of best-in-class open-source tools:
 - `/scripts`: Build and distribution scripts for macOS, Linux, and Windows.
 - `/docs`: Architecture, roadmap, and contribution guides.
 
-## 📦 Releases (Phase 4)
+## 📦 Releases
 
-Push a tag `v*` (e.g. `v1.0.0`) to trigger a GitHub Release: the workflow builds OpenFlux on macOS and Linux, then uploads `OpenFlux-{version}-darwin-{arch}.zip` and `OpenFlux-{version}-linux-{arch}.tar.gz` to the release. See `shell/README.md` (Phase 4) and `.github/workflows/release.yml`.
+Build the desktop app with `cd desktop && npm run tauri build`; artifacts are in `desktop/src-tauri/target/release/bundle/`. For CI releases, add a workflow that runs `tauri build` per platform and uploads the DMG / .app / installers to GitHub Releases. See `desktop/README.md` and [Tauri distribution](https://v2.tauri.app/distribute/).
 
 ## 🔧 Backend (Phase 3)
 

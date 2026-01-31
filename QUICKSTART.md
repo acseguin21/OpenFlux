@@ -1,52 +1,40 @@
 # OpenFlux Quick Start Guide
 
-Get OpenFlux up and running in minutes!
+Get OpenFlux up and running in minutes. **Recommended:** Desktop app (download DMG → open) + backend.
 
 ## Prerequisites
 
-1. **Python 3.10+**
-   ```bash
-   python3 --version
-   ```
+- **Python 3.10+** (backend)
+- **Node.js 18+** (desktop app or extension)
+- **Ollama** (local models): [ollama.com](https://ollama.com); then `ollama pull llama3.1:8b` and `ollama pull nomic-embed-text`
 
-2. **Node.js 18+** (for the editor extension)
-   ```bash
-   node --version
-   ```
+## Fast path: Desktop app
 
-3. **Ollama** (for local models)
+1. **Build the desktop app** (one command):
    ```bash
-   # Install Ollama from https://ollama.com
-   ollama --version
-   
-   # Pull required models
-   ollama pull llama3.1:8b
-   ollama pull nomic-embed-text
-   ```
-
-## Installation
-
-1. **Clone and setup Python environment**
-   ```bash
-   cd openflux
-   python3 -m venv venv
-   source venv/bin/activate  # On Windows: venv\Scripts\activate
-   pip install -r requirements.txt
-   
-   # Optional: Install language parsers (may require building from source on Python 3.13+)
-   pip install -r requirements-optional.txt || echo "Language parsers optional - continuing..."
-   ```
-
-2. **Install editor extension dependencies**
-   ```bash
-   cd extensions/openflux-ai-tools
+   cd desktop
    npm install
-   npm run compile  # Build TypeScript
+   npm run tauri build
    ```
+   Open the app from `desktop/src-tauri/target/release/bundle/` (e.g. `.dmg` on macOS).
 
-## Running OpenFlux
+2. **Start the backend** (from repo root):
+   ```bash
+   ./scripts/start_server.sh
+   ```
+   If you haven’t set up Python yet: `python3 -m venv venv`, `source venv/bin/activate`, `pip install -r requirements.txt`, then run the script again.
 
-### 1. Start the API Server
+3. **In the app:** Set backend URL to `http://localhost:8000` → **Connect** → type a goal in the composer → **Run agent**.
+
+## Alternative: Extension in an editor
+
+1. **Backend:** From repo root, `./scripts/start_server.sh` (ensure venv and `pip install -r requirements.txt` first).
+2. **Extension:** `cd extensions/openflux-ai-tools && npm install && npm run compile`. Load the extension in Cursor/VSCode (e.g. Run → Start Debugging).
+3. Set `openflux.apiUrl` to `http://localhost:8000` in settings.
+
+## Running OpenFlux (backend details)
+
+### Start the API server
 
 ```bash
 # From project root
@@ -57,36 +45,18 @@ source venv/bin/activate
 python -m uvicorn core.api.server:app --host 0.0.0.0 --port 8000 --reload
 ```
 
-The server will be available at `http://localhost:8000`.
+Server: `http://localhost:8000`. **Optional (start at login):** `./scripts/install_backend_service.sh` (macOS launchd). See **`docs/BACKEND.md`**.
 
-**Optional (start at login):** Run `./scripts/install_backend_service.sh` for macOS launchd. See **`docs/BACKEND.md`** for details and Linux.
+### Using the desktop app
 
-### 2. Load the Extension in the Editor
+Open the built app → Connect to `http://localhost:8000` → use the composer to run the agent.
 
-1. Open a Code-compatible editor (e.g. from this repo’s built app or a compatible IDE)
-2. Press `F5` or go to Run → Start Debugging
-3. A new editor window will open with the extension loaded
+### Using the extension (in-editor)
 
-### 3. Index Your Codebase
-
-1. Open a workspace folder in the editor
-2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
-3. Run command: `OpenFlux: Index Codebase`
-4. Wait for indexing to complete (check status bar)
-
-### 4. Search Your Code
-
-1. Press `Ctrl+Shift+P`
-2. Run command: `OpenFlux: Search Codebase`
-3. Enter your query (e.g., "authentication login")
-4. Results will open in a new markdown document
-
-### 5. Use the Agent
-
-1. Press `Ctrl+Shift+P`
-2. Run command: `OpenFlux: Start Autonomous Agent`
-3. Enter your goal (e.g., "Add error handling to all API routes")
-4. Watch as the agent plans, executes, and verifies changes
+1. Open a Code-compatible editor with the OpenFlux AI Tools extension loaded.
+2. **Index:** `Ctrl+Shift+P` → `OpenFlux: Index Codebase`; wait for indexing (status bar).
+3. **Search:** `OpenFlux: Search Codebase` for semantic search.
+4. **Agent:** `OpenFlux: Start Autonomous Agent` or open the Composer panel.
 
 ## Configuration
 

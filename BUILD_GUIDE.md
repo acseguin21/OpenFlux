@@ -1,60 +1,44 @@
 # Build & Setup Guide for OpenFlux
 
-This guide outlines how to build your own version of OpenFlux from source or set it up as a "Pro-Extension" kit.
+This guide outlines how to build and run OpenFlux. **Primary install path:** the Tauri desktop app (one command → DMG /.app / installers).
 
-## Option 1: The "Pro-Extension" Kit (Fastest)
+## Option 1: Desktop app (recommended — installable)
 
-If you don't want to manage a full editor fork yet, you can use a Code-compatible editor (e.g. from your package manager) with our bundled configuration.
-
-1. **Install a Code-compatible editor**: e.g. `brew install --cask vscodium` (macOS) or use the built OpenFlux app from this repo.
-2. **Install Ollama**: [ollama.com](https://ollama.com)
-3. **Pull Models**:
-   ```bash
-   ollama pull llama3.1:8b  # For reasoning
-   ollama pull starcoder2:3b # For autocomplete
-   ```
-4. **Clone OpenFlux Config**:
-   ```bash
-   git clone https://github.com/your-org/openflux-config ~/.config/openflux
-   ```
-5. **Symlink Extensions**: Our scripts will auto-install `Continue`, `Tree-sitter`, and `LSP` enhancements.
-
-## Option 2: Building the OpenFlux Shell (Advanced)
-
-To create a standalone binary with custom branding and UI components.
+**One command** builds the standalone native app. No VSCode/Code clone.
 
 ### Prerequisites
-- Node.js 18+
-- Python 3.10+
-- C++ Compiler (GCC/Clang)
 
-### Steps
+- **Node.js** 18+ and npm (or bun)
+- **Rust** (stable): [rustup](https://rustup.rs/)
+- **Platform:** [Tauri prerequisites](https://v2.tauri.app/start/prerequisites/)
 
-1. **Clone the upstream editor** (see `shell/README.md` for the recommended build; the script clones the upstream repo and applies our patches):
-   ```bash
-   ./shell/scripts/clone_and_build.sh   # from repo root
-   ```
-   Or manually: clone the upstream Code-compatible editor repo, then apply OpenFlux patches from `shell/patches/`.
-2. **Apply OpenFlux Patches**:
-   Our patches modify `src/vs/workbench/contrib` to add the custom AI sidecar and Composer UI.
-   ```bash
-   git apply ../openflux/patches/*.patch
-   ```
-3. **Build**:
-   ```bash
-   ./build.sh
-   ```
-4. **Package**:
-   ```bash
-   ./package.sh
-   ```
+### Build
 
-## Option 3: Setting up the Indexer
+```bash
+cd desktop
+npm install
+npm run tauri build
+```
 
-OpenFlux requires a local vector database for codebase awareness.
+Output: `desktop/src-tauri/target/release/bundle/` — **macOS:** `.dmg`, `.app`; **Windows:** NSIS `.exe`; **Linux:** `.deb`, `.rpm`, AppImage. Double-click to run.
 
-1. **Start the OpenFlux-Indexer**:
-   ```bash
-   docker run -d -p 8000:8000 openflux/indexer
-   ```
-2. **Point the IDE**: In your settings, set `openflux.indexer.url: "http://localhost:8000"`.
+Then start the backend from repo root: `./scripts/start_server.sh`. Open the app → set backend URL `http://localhost:8000` → **Connect** → use the composer.
+
+See **`desktop/README.md`** for dev (`tauri dev`) and optional app icons.
+
+## Option 2: Pro-Extension (use inside an editor)
+
+Use the OpenFlux AI Tools extension inside a Code-compatible editor (Cursor, VSCode, VSCodium).
+
+1. **Install a Code-compatible editor** (e.g. `brew install --cask vscodium`).
+2. **Install Ollama**: [ollama.com](https://ollama.com); pull `llama3.1:8b`, `nomic-embed-text`.
+3. Build the extension: `cd extensions/openflux-ai-tools && npm install && npm run compile`.
+4. Start the backend: `./scripts/start_server.sh`. Set `openflux.apiUrl` to `http://localhost:8000` in editor settings.
+
+## Option 3: Shell build (deprecated for installability)
+
+The Code-based IDE build in `shell/` is **deprecated** as the install path. Use **Option 1 (desktop)** for “download DMG and open.” The shell build remains for advanced users who want a full Code-fork IDE; see `shell/README.md`. It requires cloning the upstream editor, patching, and a long build.
+
+## Backend / Indexer
+
+OpenFlux desktop and extension talk to a **local API** at `http://localhost:8000`. Start it with `./scripts/start_server.sh` from repo root. The backend runs the indexer and agent; see **`docs/BACKEND.md`**.

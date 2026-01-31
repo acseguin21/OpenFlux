@@ -11,6 +11,11 @@ out/
 bin/
 .lafufu/
 .lafufu/*
+lafufu/
 __pycache__/
 *.pyc
 venv/
+# Desktop app build artifacts
+desktop/node_modules/
+desktop/dist/
+desktop/src-tauri/target/

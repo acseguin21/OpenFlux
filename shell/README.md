@@ -1,6 +1,8 @@
-# OpenFlux Shell (Open Editor Base)
+# OpenFlux Shell (Open Editor Base) — **Deprecated for installability**
 
-This directory holds **patches and branding** for building the OpenFlux standalone IDE from an open editor base (Code-compatible source; see [upstream howto-build](https://github.com/VSCodium/vscodium/blob/master/docs/howto-build.md)).
+**For “download DMG, open right away,” use the Tauri desktop app instead:** see **`desktop/README.md`** and the main **`README.md`**. Build with `cd desktop && npm run tauri build`; no VSCode clone.
+
+This directory holds **patches and branding** for building the OpenFlux **full IDE** from an open editor base (Code-compatible source; see [upstream howto-build](https://github.com/VSCodium/vscodium/blob/master/docs/howto-build.md)). This path is **deprecated as the primary install**: it requires cloning the upstream editor and a long build. Use it only if you need a full Code-based IDE; otherwise use the **desktop** app.
 
 - **`patches/`** – Patches applied to the upstream `build.sh` so our post-prepare runs after `prepare_vscode.sh`.
 - **`branding/`** – `product.json` overrides (name “OpenFlux by VibeCoders United”, bundle IDs, etc.) and optional icons.
