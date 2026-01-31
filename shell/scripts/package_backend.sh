@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
-# Package the OpenCode Python backend into a standalone executable (Option A scaffolding).
+# Package the OpenFlux Python backend into a standalone executable (Option A scaffolding).
 # Run from repo root. Requires: Python venv with requirements.txt installed.
-# Output: .build/opencode-backend/ (or OPENCODE_BACKEND_DIST). To bundle with the app,
-# copy contents into OpenCode.app/Contents/Resources/backend/ (macOS) and have the IDE
+# Output: .build/openflux-backend/ (or OPENFLUX_BACKEND_DIST). To bundle with the app,
+# copy contents into OpenFlux.app/Contents/Resources/backend/ (macOS) and have the IDE
 # spawn the binary on launch (see docs/BACKEND.md and STANDALONE_IDE_ROADMAP.md).
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-OUTPUT_DIR="${OPENCODE_BACKEND_DIST:-$REPO_ROOT/.build/opencode-backend}"
+OUTPUT_DIR="${OPENFLUX_BACKEND_DIST:-$REPO_ROOT/.build/openflux-backend}"
 VENV="$REPO_ROOT/venv"
 ENTRY="$REPO_ROOT/scripts/run_backend_entry.py"
 
 cd "$REPO_ROOT"
 
-echo "=== Package OpenCode backend (Option A scaffolding) ==="
+echo "=== Package OpenFlux backend (Option A scaffolding) ==="
 echo "Repo root: $REPO_ROOT"
 echo "Output:    $OUTPUT_DIR"
 echo ""
@@ -44,7 +44,7 @@ cd "$REPO_ROOT"
   --distpath "$OUTPUT_DIR/dist" \
   --workpath "$OUTPUT_DIR/build" \
   --specpath "$OUTPUT_DIR" \
-  --name opencode-backend \
+  --name openflux-backend \
   --hidden-import "uvicorn.logging" \
   --hidden-import "uvicorn.loops.auto" \
   --hidden-import "uvicorn.protocols.http.auto" \
@@ -56,11 +56,11 @@ cd "$REPO_ROOT"
   "$ENTRY" \
   || true
 
-if [[ -d "$OUTPUT_DIR/dist/opencode-backend" ]]; then
+if [[ -d "$OUTPUT_DIR/dist/openflux-backend" ]]; then
   echo ""
-  echo "Backend bundle: $OUTPUT_DIR/dist/opencode-backend/"
-  echo "Run: $OUTPUT_DIR/dist/opencode-backend/opencode-backend"
-  echo "To bundle with the app: copy that folder to OpenCode.app/Contents/Resources/backend/"
+  echo "Backend bundle: $OUTPUT_DIR/dist/openflux-backend/"
+  echo "Run: $OUTPUT_DIR/dist/openflux-backend/openflux-backend"
+  echo "To bundle with the app: copy that folder to OpenFlux.app/Contents/Resources/backend/"
 else
   echo "PyInstaller may have failed (e.g. missing hidden imports). See Option B in docs/BACKEND.md for manual run."
 fi

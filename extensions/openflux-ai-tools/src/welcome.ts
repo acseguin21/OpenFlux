@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
 
-export const REPO_DOCS = "https://github.com/acseguin21/opencode#readme";
-export const BACKEND_DOCS = "https://github.com/acseguin21/opencode/blob/master/docs/BACKEND.md";
+export const REPO_DOCS = "https://github.com/acseguin21/openflux#readme";
+export const BACKEND_DOCS = "https://github.com/acseguin21/openflux/blob/master/docs/BACKEND.md";
 
 export function getWelcomeHtml(): string {
     return `<!DOCTYPE html>
@@ -9,7 +9,7 @@ export function getWelcomeHtml(): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to OpenCode</title>
+    <title>Welcome to OpenFlux</title>
     <style>
         body {
             font-family: var(--vscode-font-family);
@@ -32,26 +32,26 @@ export function getWelcomeHtml(): string {
     </style>
 </head>
 <body>
-    <h1>Welcome to OpenCode</h1>
+    <h1>Welcome to OpenFlux</h1>
     <p class="tagline">by VibeCoders United — standalone AI IDE, open source, build from GitHub.</p>
 
     <h2>Get started</h2>
     <div class="step">
         <p><strong>1. Start the backend</strong></p>
-        <p>Indexing and agent features need the OpenCode API at <code>http://localhost:8000</code>.</p>
+        <p>Indexing and agent features need the OpenFlux API at <code>http://localhost:8000</code>.</p>
         <p>From the repo root run: <code>./scripts/start_server.sh</code></p>
-        <p>Or use the command: <strong>OpenCode: Show backend instructions</strong></p>
-        <a href="#" data-cmd="opencode.showBackendInstructions">Show backend instructions</a>
+        <p>Or use the command: <strong>OpenFlux: Show backend instructions</strong></p>
+        <a href="#" data-cmd="openflux.showBackendInstructions">Show backend instructions</a>
     </div>
     <div class="step">
         <p><strong>2. Index your codebase</strong></p>
         <p>Once the backend is running, index the workspace for search and agent context.</p>
-        <a href="#" data-cmd="opencode.indexCodebase">Index Codebase</a>
+        <a href="#" data-cmd="openflux.indexCodebase">Index Codebase</a>
     </div>
     <div class="step">
         <p><strong>3. Open Composer (chat)</strong></p>
         <p>Describe a goal in natural language; the agent will plan and execute. Scarlet &amp; Jade themed.</p>
-        <a href="#" data-cmd="opencode.openComposer">Open Composer</a>
+        <a href="#" data-cmd="openflux.openComposer">Open Composer</a>
     </div>
     <div class="step">
         <p><strong>4. Optional: Ollama &amp; models</strong></p>
@@ -61,7 +61,7 @@ export function getWelcomeHtml(): string {
     <h2>Documentation</h2>
     <p><a href="${REPO_DOCS}" data-link="repo">Repository &amp; README</a></p>
     <p><a href="${BACKEND_DOCS}" data-link="backend">Backend setup (docs/BACKEND.md)</a></p>
-    <p><a href="#" data-cmd="opencode.openDocumentation">Open Documentation (browser)</a></p>
+    <p><a href="#" data-cmd="openflux.openDocumentation">Open Documentation (browser)</a></p>
 
     <script>
         const vscode = acquireVsCodeApi();
@@ -74,7 +74,7 @@ export function getWelcomeHtml(): string {
         document.querySelectorAll('[data-link]').forEach(el => {
             el.addEventListener('click', e => {
                 e.preventDefault();
-                vscode.postMessage({ command: 'opencode.openLink', href: el.getAttribute('href') });
+                vscode.postMessage({ command: 'openflux.openLink', href: el.getAttribute('href') });
             });
         });
     </script>
@@ -84,16 +84,16 @@ export function getWelcomeHtml(): string {
 
 export function createWelcomePanel(context: vscode.ExtensionContext): void {
     const panel = vscode.window.createWebviewPanel(
-        "opencodeWelcome",
-        "Welcome to OpenCode",
+        "openfluxWelcome",
+        "Welcome to OpenFlux",
         vscode.ViewColumn.One,
         { enableScripts: true }
     );
     panel.webview.html = getWelcomeHtml();
     panel.webview.onDidReceiveMessage((msg: { command?: string; href?: string }) => {
-        if (msg.command === "opencode.openLink" && msg.href) {
+        if (msg.command === "openflux.openLink" && msg.href) {
             vscode.env.openExternal(vscode.Uri.parse(msg.href));
-        } else if (msg.command && msg.command.startsWith("opencode.")) {
+        } else if (msg.command && msg.command.startsWith("openflux.")) {
             vscode.commands.executeCommand(msg.command);
         }
     });

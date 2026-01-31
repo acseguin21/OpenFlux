@@ -1,5 +1,5 @@
 """
-FastAPI backend server for OpenCode.
+FastAPI backend server for OpenFlux.
 Provides REST API for indexing, search, and agent orchestration.
 """
 from fastapi import FastAPI, HTTPException, BackgroundTasks
@@ -13,7 +13,7 @@ from core.indexer import IndexingEngine
 from core.orchestrator import AgentOrchestrator, TaskPlan, TaskStatus
 
 
-app = FastAPI(title="OpenCode API", version="0.1.0")
+app = FastAPI(title="OpenFlux API", version="0.1.0")
 
 # CORS middleware for the editor extension
 app.add_middleware(
@@ -59,13 +59,13 @@ async def startup_event():
     """Initialize global services."""
     global indexer, orchestrator
     # These will be initialized per-request with workspace paths
-    print("OpenCode API server started")
+    print("OpenFlux API server started")
 
 
 @app.get("/")
 async def root():
     """Health check endpoint."""
-    return {"status": "ok", "service": "OpenCode API"}
+    return {"status": "ok", "service": "OpenFlux API"}
 
 
 @app.post("/api/index")
@@ -80,7 +80,7 @@ async def index_codebase(request: IndexRequest, background_tasks: BackgroundTask
         if not workspace_path.exists():
             raise HTTPException(status_code=400, detail="Workspace path does not exist")
         
-        vector_db_path = workspace_path / ".opencode" / "index"
+        vector_db_path = workspace_path / ".openflux" / "index"
         
         indexer = IndexingEngine(
             workspace_path=str(workspace_path),
@@ -136,9 +136,9 @@ async def execute_agent_task(request: AgentRequest):
         # Initialize orchestrator if needed
         if orchestrator is None or str(orchestrator.workspace_path) != str(workspace_path):
             model_config = {
-                "planning_model": os.getenv("OPENCODE_PLANNING_MODEL", "llama3.1:8b"),
-                "editing_model": os.getenv("OPENCODE_EDITING_MODEL", "llama3.1:8b"),
-                "verification_model": os.getenv("OPENCODE_VERIFICATION_MODEL", "llama3.1:8b"),
+                "planning_model": os.getenv("OPENFLUX_PLANNING_MODEL", "llama3.1:8b"),
+                "editing_model": os.getenv("OPENFLUX_EDITING_MODEL", "llama3.1:8b"),
+                "verification_model": os.getenv("OPENFLUX_VERIFICATION_MODEL", "llama3.1:8b"),
                 "use_shadow_branch": True,
             }
             

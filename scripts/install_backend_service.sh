@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# Install OpenCode backend as a macOS user LaunchAgent (starts at login).
-# Run from the OpenCode repo root. Uninstall: launchctl unload ~/Library/LaunchAgents/com.vibecoders.opencode.backend.plist
+# Install OpenFlux backend as a macOS user LaunchAgent (starts at login).
+# Run from the OpenFlux repo root. Uninstall: launchctl unload ~/Library/LaunchAgents/com.vibecoders.openflux.backend.plist
 
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
-PLIST_ID="com.vibecoders.opencode.backend"
+PLIST_ID="com.vibecoders.openflux.backend"
 PLIST_NAME="$PLIST_ID.plist"
 LAUNCH_AGENTS="$HOME/Library/LaunchAgents"
 PLIST_PATH="$LAUNCH_AGENTS/$PLIST_NAME"
-LOG_DIR="$HOME/Library/Logs/OpenCode"
+LOG_DIR="$HOME/Library/Logs/OpenFlux"
 VENV_PYTHON="$REPO_ROOT/venv/bin/python"
 
 cd "$REPO_ROOT"
@@ -66,7 +66,7 @@ EOF
 launchctl unload "$PLIST_PATH" 2>/dev/null || true
 launchctl load "$PLIST_PATH"
 
-echo "OpenCode backend service installed."
+echo "OpenFlux backend service installed."
 echo "  Plist: $PLIST_PATH"
 echo "  Logs:  $LOG_DIR/"
 echo "  URL:   http://localhost:8000"

@@ -55,7 +55,7 @@ class CodeChunk:
 
 class IndexingEngine:
     """
-    OpenCode Indexing Engine:
+    OpenFlux Indexing Engine:
     Uses Tree-sitter for syntax-aware chunking and a local vector DB for retrieval.
     """
     
@@ -121,7 +121,7 @@ class IndexingEngine:
     
     def _init_vector_db(self):
         """Initialize LanceDB connection."""
-        db_path = self.vector_db_path / "opencode_index"
+        db_path = self.vector_db_path / "openflux_index"
         db_path.mkdir(parents=True, exist_ok=True)
         return lancedb.connect(str(db_path))
     
@@ -131,9 +131,9 @@ class IndexingEngine:
         return self.LANGUAGE_MAP.get(ext)
     
     def _should_index_file(self, file_path: Path) -> bool:
-        """Check if file should be indexed based on .opencodeignore rules."""
-        # Check for .opencodeignore file
-        ignore_file = self.workspace_path / ".opencodeignore"
+        """Check if file should be indexed based on .openfluxignore rules."""
+        # Check for .openfluxignore file
+        ignore_file = self.workspace_path / ".openfluxignore"
         if ignore_file.exists():
             with open(ignore_file, "r") as f:
                 ignore_patterns = [line.strip() for line in f if line.strip()]

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Debug script to check OpenCode installation and identify issues.
+Debug script to check OpenFlux installation and identify issues.
 """
 import sys
 from pathlib import Path
@@ -26,7 +26,7 @@ def check_file_exists(file_path):
         return False
 
 def main():
-    print("OpenCode Debug Check")
+    print("OpenFlux Debug Check")
     print("=" * 50)
     print()
     

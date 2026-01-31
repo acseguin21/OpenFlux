@@ -4,16 +4,16 @@ Place patches here that are applied on top of the upstream editor before buildin
 
 Typical targets:
 
-- **Product name** – Change the upstream product name to “OpenCode” in window title, About dialog, and `product.json`.
+- **Product name** – Change the upstream product name to “OpenFlux” in window title, About dialog, and `product.json`.
 - **Default theme** – Point to a bundled Scarlet & Jade theme.
-- **Built-in extensions** – Ensure `extensions/opencode-ai-tools` (and optionally compatible extensions) are included in the build.
+- **Built-in extensions** – Ensure `extensions/openflux-ai-tools` (and optionally compatible extensions) are included in the build.
 
 Create patches from the upstream clone after making edits, e.g.:
 
 ```bash
 cd /path/to/upstream-clone
 # edit files...
-git diff --no-prefix > /path/to/opencode/shell/patches/product-name.patch
+git diff --no-prefix > /path/to/openflux/shell/patches/product-name.patch
 ```
 
 Apply in build script with:

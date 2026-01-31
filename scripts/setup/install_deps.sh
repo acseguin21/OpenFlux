@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# OpenCode Neo-Tactical Setup Script (SV 2026)
-echo "⚡ Initializing OpenCode Development Environment..."
+# OpenFlux Neo-Tactical Setup Script (SV 2026)
+echo "⚡ Initializing OpenFlux Development Environment..."
 
 # Create Python Virtual Env
 echo "🐍 Setting up Python Core..."
@@ -20,7 +20,7 @@ fi
 
 # Setup Extension
 echo "📦 Setting up Node.js Extension..."
-cd extensions/opencode-ai-tools
+cd extensions/openflux-ai-tools
 npm install
 cd ../..
 

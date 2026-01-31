@@ -1,6 +1,6 @@
-# OpenCode Quick Start Guide
+# OpenFlux Quick Start Guide
 
-Get OpenCode up and running in minutes!
+Get OpenFlux up and running in minutes!
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ Get OpenCode up and running in minutes!
 
 1. **Clone and setup Python environment**
    ```bash
-   cd opencode
+   cd openflux
    python3 -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    pip install -r requirements.txt
@@ -39,12 +39,12 @@ Get OpenCode up and running in minutes!
 
 2. **Install editor extension dependencies**
    ```bash
-   cd extensions/opencode-ai-tools
+   cd extensions/openflux-ai-tools
    npm install
    npm run compile  # Build TypeScript
    ```
 
-## Running OpenCode
+## Running OpenFlux
 
 ### 1. Start the API Server
 
@@ -71,20 +71,20 @@ The server will be available at `http://localhost:8000`.
 
 1. Open a workspace folder in the editor
 2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
-3. Run command: `OpenCode: Index Codebase`
+3. Run command: `OpenFlux: Index Codebase`
 4. Wait for indexing to complete (check status bar)
 
 ### 4. Search Your Code
 
 1. Press `Ctrl+Shift+P`
-2. Run command: `OpenCode: Search Codebase`
+2. Run command: `OpenFlux: Search Codebase`
 3. Enter your query (e.g., "authentication login")
 4. Results will open in a new markdown document
 
 ### 5. Use the Agent
 
 1. Press `Ctrl+Shift+P`
-2. Run command: `OpenCode: Start Autonomous Agent`
+2. Run command: `OpenFlux: Start Autonomous Agent`
 3. Enter your goal (e.g., "Add error handling to all API routes")
 4. Watch as the agent plans, executes, and verifies changes
 
@@ -96,9 +96,9 @@ Add to your `settings.json`:
 
 ```json
 {
-  "opencode.apiUrl": "http://localhost:8000",
-  "opencode.useOllama": true,
-  "opencode.embeddingModel": "nomic-embed-text"
+  "openflux.apiUrl": "http://localhost:8000",
+  "openflux.useOllama": true,
+  "openflux.embeddingModel": "nomic-embed-text"
 }
 ```
 
@@ -107,9 +107,9 @@ Add to your `settings.json`:
 For the API server:
 
 ```bash
-export OPENCODE_PLANNING_MODEL="llama3.1:8b"
-export OPENCODE_EDITING_MODEL="llama3.1:8b"
-export OPENCODE_VERIFICATION_MODEL="llama3.1:8b"
+export OPENFLUX_PLANNING_MODEL="llama3.1:8b"
+export OPENFLUX_EDITING_MODEL="llama3.1:8b"
+export OPENFLUX_VERIFICATION_MODEL="llama3.1:8b"
 ```
 
 ## Troubleshooting
@@ -123,7 +123,7 @@ export OPENCODE_VERIFICATION_MODEL="llama3.1:8b"
 ### Extension can't connect
 
 - Verify server is running: `curl http://localhost:8000`
-- Check `opencode.apiUrl` setting matches server URL
+- Check `openflux.apiUrl` setting matches server URL
 - Check the editor output panel for errors
 
 ### Indexing fails

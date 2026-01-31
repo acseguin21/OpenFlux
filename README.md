@@ -1,6 +1,6 @@
-# OpenCode: The Transparent, Open-Source AI IDE
+# OpenFlux: The Transparent, Open-Source AI IDE
 
-**Download OpenCode** — standalone AI IDE, open source, build from GitHub. **VibeCoders United** is the organization behind OpenCode: a single application (like popular subscription-based AI IDEs) built from **open-source projects** you can pull and build from GitHub. Community-driven, privacy-first, with no vendor lock-in or hidden telemetry.
+**Download OpenFlux** — standalone AI IDE, open source, build from GitHub. **VibeCoders United** is the organization behind OpenFlux: a single application (like popular subscription-based AI IDEs) built from **open-source projects** you can pull and build from GitHub. Community-driven, privacy-first, with no vendor lock-in or hidden telemetry.
 
 ## One-command install
 
@@ -13,7 +13,7 @@
 **Clone and run** (one line; replace the URL if your fork is elsewhere):
 
 ```bash
-git clone https://github.com/acseguin21/opencode.git opencode && cd opencode && ./scripts/install_and_run.sh
+git clone https://github.com/acseguin21/openflux.git openflux && cd openflux && ./scripts/install_and_run.sh
 ```
 
 That chains: clone → quick_start (venv, deps, extension build) → start_server (background). Backend at `http://localhost:8000`. See **`QUICKSTART.md`** for using the extension.
@@ -26,9 +26,9 @@ That chains: clone → quick_start (venv, deps, extension build) → start_serve
 - **Local-First RAG**: High-performance codebase indexing that stays on your machine.
 - **Community Owned**: No hidden trackers, no proprietary "secret sauce" edit models.
 
-## Why OpenCode
+## Why OpenFlux
 
-| | Subscription-based (typical) | OpenCode |
+| | Subscription-based (typical) | OpenFlux |
 |--|-------------------------------|----------|
 | **Cost** | ~$20/mo subscription | Free; BYOK or local models (pay provider only) |
 | **Model choice** | Curated by vendor | Any model (Ollama or any compatible API) |
@@ -39,7 +39,7 @@ That chains: clone → quick_start (venv, deps, extension build) → start_serve
 
 ## 🌌 The Aesthetic: Scarlet & Jade (VibeCoders United)
 
-OpenCode uses **Scarlet** and **Jade** accent colours with **complementary neutral tones** so the UI stays clear and the accents pop. High-density, high-agency UI—less like a plain text editor, more like a **Strategic Command Center** for AI orchestration.
+OpenFlux uses **Scarlet** and **Jade** accent colours with **complementary neutral tones** so the UI stays clear and the accents pop. High-density, high-agency UI—less like a plain text editor, more like a **Strategic Command Center** for AI orchestration.
 
 ## 📂 Project Structure
 
@@ -52,7 +52,7 @@ OpenCode uses **Scarlet** and **Jade** accent colours with **complementary neutr
 
 ## 🛠️ Architecture
 
-OpenCode is designed as an ecosystem of best-in-class open-source tools:
+OpenFlux is designed as an ecosystem of best-in-class open-source tools:
 
 1. **The Shell**: A custom fork/distribution of an open editor base.
 2. **The Intelligence**: Powered by compatible AI extensions, integrated deeply into the IDE.
@@ -68,7 +68,7 @@ OpenCode is designed as an ecosystem of best-in-class open-source tools:
 
 ## 📦 Releases (Phase 4)
 
-Push a tag `v*` (e.g. `v1.0.0`) to trigger a GitHub Release: the workflow builds OpenCode on macOS and Linux, then uploads `OpenCode-{version}-darwin-{arch}.zip` and `OpenCode-{version}-linux-{arch}.tar.gz` to the release. See `shell/README.md` (Phase 4) and `.github/workflows/release.yml`.
+Push a tag `v*` (e.g. `v1.0.0`) to trigger a GitHub Release: the workflow builds OpenFlux on macOS and Linux, then uploads `OpenFlux-{version}-darwin-{arch}.zip` and `OpenFlux-{version}-linux-{arch}.tar.gz` to the release. See `shell/README.md` (Phase 4) and `.github/workflows/release.yml`.
 
 ## 🔧 Backend (Phase 3)
 

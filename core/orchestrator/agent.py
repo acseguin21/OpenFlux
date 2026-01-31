@@ -50,7 +50,7 @@ class TaskPlan:
 
 class AgentOrchestrator:
     """
-    OpenCode Agent Orchestrator:
+    OpenFlux Agent Orchestrator:
     Manages the 'Self-Correction Loop' (Plan-Execute-Verify).
     """
     
@@ -71,7 +71,7 @@ class AgentOrchestrator:
         
         # Use shadow branch for safe edits
         self.use_shadow_branch = model_config.get("use_shadow_branch", True)
-        self.shadow_branch = "opencode-shadow"
+        self.shadow_branch = "openflux-shadow"
     
     def plan_task(self, user_goal: str, context: Optional[List[Dict]] = None) -> TaskPlan:
         """

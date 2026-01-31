@@ -1,5 +1,5 @@
 #!/bin/bash
-# Quick start script for OpenCode
+# Quick start script for OpenFlux
 
 set -e
 
@@ -8,7 +8,7 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 cd "$PROJECT_ROOT"
 
-echo "🚀 OpenCode Quick Start"
+echo "🚀 OpenFlux Quick Start"
 echo "========================"
 echo ""
 
@@ -24,9 +24,9 @@ else
 fi
 
 # Check if extension is built
-if [ ! -d "extensions/opencode-ai-tools/dist" ]; then
+if [ ! -d "extensions/openflux-ai-tools/dist" ]; then
     echo "📦 Building editor extension..."
-    cd extensions/opencode-ai-tools
+    cd extensions/openflux-ai-tools
     if [ ! -d "node_modules" ]; then
         npm install
     fi
@@ -44,8 +44,8 @@ echo ""
 echo "2. Open the editor and press F5 to load the extension"
 echo ""
 echo "3. In the Extension Host window, open a workspace and use:"
-echo "   - Ctrl+Shift+P → 'OpenCode: Index Codebase'"
-echo "   - Ctrl+Shift+P → 'OpenCode: Search Codebase'"
-echo "   - Ctrl+Shift+P → 'OpenCode: Start Autonomous Agent'"
+echo "   - Ctrl+Shift+P → 'OpenFlux: Index Codebase'"
+echo "   - Ctrl+Shift+P → 'OpenFlux: Search Codebase'"
+echo "   - Ctrl+Shift+P → 'OpenFlux: Start Autonomous Agent'"
 echo ""
 echo "📖 See USAGE_GUIDE.md for detailed instructions"

@@ -1,5 +1,5 @@
 /**
- * OpenCode Composer — chat-style UI for agent goals, Scarlet & Jade themed.
+ * OpenFlux Composer — chat-style UI for agent goals, Scarlet & Jade themed.
  */
 
 import * as vscode from "vscode";
@@ -17,7 +17,7 @@ export function getComposerHtml(): string {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OpenCode Composer</title>
+    <title>OpenFlux Composer</title>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -105,7 +105,7 @@ export function getComposerHtml(): string {
     </style>
 </head>
 <body>
-    <div class="header">OpenCode Composer — by VibeCoders United. Describe a goal; the agent will plan and execute.</div>
+    <div class="header">OpenFlux Composer — by VibeCoders United. Describe a goal; the agent will plan and execute.</div>
     <div class="messages" id="messages"></div>
     <div class="input-area">
         <input type="text" id="goal" placeholder="e.g. Refactor the login logic, Add error handling to API routes" />
@@ -120,7 +120,7 @@ export function getComposerHtml(): string {
         function addMessage(role, content, isHtml) {
             const div = document.createElement('div');
             div.className = 'msg ' + role;
-            div.innerHTML = '<div class="role">' + (role === 'user' ? 'You' : 'OpenCode Agent') + '</div>' + (isHtml ? content : escapeHtml(content));
+            div.innerHTML = '<div class="role">' + (role === 'user' ? 'You' : 'OpenFlux Agent') + '</div>' + (isHtml ? content : escapeHtml(content));
             messagesEl.appendChild(div);
             messagesEl.scrollTop = messagesEl.scrollHeight;
         }
@@ -198,8 +198,8 @@ export function createComposerPanel(
     }
 
     const panel = vscode.window.createWebviewPanel(
-        "opencodeComposer",
-        "OpenCode Composer",
+        "openfluxComposer",
+        "OpenFlux Composer",
         vscode.ViewColumn.Beside,
         { enableScripts: true }
     );

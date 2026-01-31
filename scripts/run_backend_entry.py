@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Entry point for packaging the OpenCode backend (e.g. PyInstaller).
+Entry point for packaging the OpenFlux backend (e.g. PyInstaller).
 Runs uvicorn with core.api.server:app. Use from repo root or set PYTHONPATH.
 """
 import sys
@@ -14,6 +14,6 @@ if REPO_ROOT not in sys.path:
 if __name__ == "__main__":
     import uvicorn
     from core.api.server import app
-    host = os.environ.get("OPENCODE_HOST", "127.0.0.1")
-    port = int(os.environ.get("OPENCODE_PORT", "8000"))
+    host = os.environ.get("OPENFLUX_HOST", "127.0.0.1")
+    port = int(os.environ.get("OPENFLUX_PORT", "8000"))
     uvicorn.run(app, host=host, port=port)

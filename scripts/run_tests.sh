@@ -1,5 +1,5 @@
 #!/bin/bash
-# Run tests for OpenCode
+# Run tests for OpenFlux
 
 set -e
 
@@ -8,7 +8,7 @@ PROJECT_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 
 cd "$PROJECT_ROOT"
 
-echo "Running OpenCode tests..."
+echo "Running OpenFlux tests..."
 echo "=========================="
 
 # Check if virtual environment exists

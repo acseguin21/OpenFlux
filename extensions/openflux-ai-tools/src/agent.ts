@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { OpenCodeClient } from "./client";
+import { OpenFluxClient } from "./client";
 
 export interface AgentProviderOptions {
     onAgentStart?: () => void;
@@ -8,7 +8,7 @@ export interface AgentProviderOptions {
 
 export class AgentProvider {
     constructor(
-        private client: OpenCodeClient,
+        private client: OpenFluxClient,
         private options: AgentProviderOptions = {}
     ) {}
 
@@ -35,7 +35,7 @@ export class AgentProvider {
         const isHealthy = await this.client.healthCheck();
         if (!isHealthy) {
             vscode.window.showErrorMessage(
-                "OpenCode API server is not running. Please start it with: ./scripts/start_server.sh"
+                "OpenFlux API server is not running. Please start it with: ./scripts/start_server.sh"
             );
             return;
         }
@@ -69,7 +69,7 @@ export class AgentProvider {
                     }
 
                     // Show plan in output channel
-                    const outputChannel = vscode.window.createOutputChannel("OpenCode Agent");
+                    const outputChannel = vscode.window.createOutputChannel("OpenFlux Agent");
                     outputChannel.appendLine(`Goal: ${goal}`);
                     outputChannel.appendLine(`Status: ${result.status}`);
                     outputChannel.appendLine(`Message: ${result.message}`);

@@ -1,0 +1,104 @@
+{
+  "name": "openflux-ai-tools",
+  "displayName": "OpenFlux AI Tools",
+  "description": "Core AI capabilities for the OpenFlux IDE, including context retrieval and agent orchestration.",
+  "version": "0.1.0",
+  "publisher": "openflux",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "AI",
+    "Machine Learning"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onCommand:openflux.indexCodebase",
+    "onCommand:openflux.startAgent",
+    "onCommand:openflux.searchCodebase",
+    "onCommand:openflux.showBackendInstructions",
+    "onCommand:openflux.showWelcome",
+    "onCommand:openflux.openDocumentation",
+    "onCommand:openflux.openComposer"
+  ],
+  "dependencies": {
+    "axios": "^1.6.0",
+    "tree-sitter": "^0.21.0",
+    "vscode-languageclient": "^9.0.0",
+    "eventsource": "^2.0.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/node": "^18.0.0",
+    "typescript": "^5.0.0",
+    "esbuild": "^0.20.0",
+    "@vscode/vsce": "^3.0.0"
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "openflux.indexCodebase",
+        "title": "OpenFlux: Index Codebase"
+      },
+      {
+        "command": "openflux.startAgent",
+        "title": "OpenFlux: Start Autonomous Agent"
+      },
+      {
+        "command": "openflux.searchCodebase",
+        "title": "OpenFlux: Search Codebase"
+      },
+      {
+        "command": "openflux.showBackendInstructions",
+        "title": "OpenFlux: Show backend instructions"
+      },
+      {
+        "command": "openflux.showWelcome",
+        "title": "OpenFlux: Show Welcome"
+      },
+      {
+        "command": "openflux.openDocumentation",
+        "title": "OpenFlux: Open Documentation"
+      },
+      {
+        "command": "openflux.openComposer",
+        "title": "OpenFlux: Open Composer"
+      }
+    ],
+    "configuration": {
+      "title": "OpenFlux",
+      "properties": {
+        "openflux.apiUrl": {
+          "type": "string",
+          "default": "http://localhost:8000",
+          "description": "URL of the OpenFlux API server"
+        },
+        "openflux.useOllama": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use Ollama for local embeddings and models"
+        },
+        "openflux.embeddingModel": {
+          "type": "string",
+          "default": "nomic-embed-text",
+          "description": "Ollama model to use for embeddings"
+        }
+      }
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "openflux-explorer",
+          "title": "OpenFlux AI",
+          "icon": "resources/icon.svg"
+        }
+      ]
+    }
+  }
+}

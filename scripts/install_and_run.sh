@@ -16,7 +16,7 @@ echo "Starting backend in background..."
 BACKEND_PID=$!
 sleep 3
 echo ""
-echo "✅ OpenCode is ready."
+echo "✅ OpenFlux is ready."
 echo "   Backend: http://localhost:8000 (PID $BACKEND_PID)"
 echo "   Stop it: kill $BACKEND_PID"
 echo "   Or run in foreground next time: ./scripts/start_server.sh"

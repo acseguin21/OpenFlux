@@ -1,4 +1,4 @@
-# OpenCode Core Dependencies
+# OpenFlux Core Dependencies
 
 # Core AI & LLM Connectivity
 openai>=1.0.0

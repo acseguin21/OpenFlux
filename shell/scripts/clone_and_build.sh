@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Build OpenCode standalone IDE from the upstream editor (Code-compatible source).
-# Run from the OpenCode repo root, or from shell/scripts (repo root is auto-detected).
+# Build OpenFlux standalone IDE from the upstream editor (Code-compatible source).
+# Run from the OpenFlux repo root, or from shell/scripts (repo root is auto-detected).
 
 set -e
 
@@ -8,12 +8,12 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Repo root: script lives at repo/shell/scripts/
 REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 SHELL_DIR="$REPO_ROOT/shell"
-BUILD_DIR="${OPENCODE_SHELL_BUILD_DIR:-$REPO_ROOT/.build/opencode-shell}"
+BUILD_DIR="${OPENFLUX_SHELL_BUILD_DIR:-$REPO_ROOT/.build/openflux-shell}"
 VSCODIUM_DIR="$BUILD_DIR/vscodium"
 
 cd "$REPO_ROOT"
 
-echo "=== OpenCode shell build (Phase 1) ==="
+echo "=== OpenFlux shell build (Phase 1) ==="
 echo "Repo root: $REPO_ROOT"
 echo "Build dir: $BUILD_DIR"
 echo ""
@@ -27,24 +27,24 @@ else
   echo "Using existing upstream clone at $VSCODIUM_DIR"
 fi
 
-# 2. Copy OpenCode branding and post-prepare script into the clone
-echo "Copying OpenCode branding..."
+# 2. Copy OpenFlux branding and post-prepare script into the clone
+echo "Copying OpenFlux branding..."
 cp "$SHELL_DIR/branding/product.json" "$VSCODIUM_DIR/product.json"
-cp "$SHELL_DIR/scripts/opencode-post-prepare.sh" "$VSCODIUM_DIR/opencode-post-prepare.sh"
-chmod +x "$VSCODIUM_DIR/opencode-post-prepare.sh"
+cp "$SHELL_DIR/scripts/openflux-post-prepare.sh" "$VSCODIUM_DIR/openflux-post-prepare.sh"
+chmod +x "$VSCODIUM_DIR/openflux-post-prepare.sh"
 
-# 3. Patch build.sh to run opencode-post-prepare.sh after prepare_vscode.sh
-if ! grep -q "opencode-post-prepare" "$VSCODIUM_DIR/build.sh" 2>/dev/null; then
+# 3. Patch build.sh to run openflux-post-prepare.sh after prepare_vscode.sh
+if ! grep -q "openflux-post-prepare" "$VSCODIUM_DIR/build.sh" 2>/dev/null; then
   echo "Patching build.sh..."
   (cd "$VSCODIUM_DIR" && patch -p1 < "$SHELL_DIR/patches/build-add-post-prepare.patch" || true)
   # If patch failed (e.g. context mismatch), try inline sed
-  if ! grep -q "opencode-post-prepare" "$VSCODIUM_DIR/build.sh" 2>/dev/null; then
+  if ! grep -q "openflux-post-prepare" "$VSCODIUM_DIR/build.sh" 2>/dev/null; then
     if [[ "$(uname -s)" == "Darwin" ]]; then
       sed -i '' '/\. prepare_vscode\.sh$/a\
- bash opencode-post-prepare.sh
+ bash openflux-post-prepare.sh
 ' "$VSCODIUM_DIR/build.sh"
     else
-      sed -i '/\. prepare_vscode\.sh$/a bash opencode-post-prepare.sh' "$VSCODIUM_DIR/build.sh"
+      sed -i '/\. prepare_vscode\.sh$/a bash openflux-post-prepare.sh' "$VSCODIUM_DIR/build.sh"
     fi
   fi
 else
@@ -60,16 +60,16 @@ echo ""
 cd "$VSCODIUM_DIR"
 ./dev/build.sh
 
-# Phase 2: Bundle OpenCode extensions into the built app
+# Phase 2: Bundle OpenFlux extensions into the built app
 echo ""
 if [[ -f "$SHELL_DIR/scripts/bundle_extensions.sh" ]]; then
   bash "$SHELL_DIR/scripts/bundle_extensions.sh" "$VSCODIUM_DIR"
 else
-  echo "To bundle OpenCode AI Tools and Scarlet & Jade theme, run:"
+  echo "To bundle OpenFlux AI Tools and Scarlet & Jade theme, run:"
   echo "  bash shell/scripts/bundle_extensions.sh $VSCODIUM_DIR"
 fi
 
 echo ""
 echo "=== Build complete ==="
 echo "Output is under $VSCODIUM_DIR (e.g. built app dirs per platform)."
-echo "The built app will show as OpenCode by VibeCoders United."
+echo "The built app will show as OpenFlux by VibeCoders United."

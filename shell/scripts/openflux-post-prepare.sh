@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# OpenCode post-prepare: replace upstream product name with OpenCode/opencode in the editor tree.
+# OpenFlux post-prepare: replace upstream product name with OpenFlux/openflux in the editor tree.
 # Run from the upstream repo root after prepare_vscode.sh.
 
 set -e
@@ -16,28 +16,28 @@ sed_i() {
   fi
 }
 
-# Replace upstream product name -> OpenCode in key files (user-facing / package metadata).
+# Replace upstream product name -> OpenFlux in key files (user-facing / package metadata).
 # We do not replace the package name globally so upstream URLs are left intact.
 replace_in_file() {
   local f="$1"
   [[ -f "$f" ]] || return 0
-  sed_i 's/VSCodium/OpenCode/g' "$f"
+  sed_i 's/VSCodium/OpenFlux/g' "$f"
 }
 
-# Replace package name "codium" with "opencode" only on Package: line (Linux control.template).
+# Replace package name "codium" with "openflux" only on Package: line (Linux control.template).
 replace_deb_package_name() {
   local f="$VSCODE_DIR/resources/linux/debian/control.template"
   [[ -f "$f" ]] || return 0
-  sed_i 's/^Package: codium$/Package: opencode/' "$f"
-  sed_i 's/^Package: codium-insiders$/Package: opencode-insiders/' "$f"
+  sed_i 's/^Package: codium$/Package: openflux/' "$f"
+  sed_i 's/^Package: codium-insiders$/Package: openflux-insiders/' "$f"
 }
 
-# In postinst, the package name was set to "codium" by prepare_vscode; change to "opencode".
+# In postinst, the package name was set to "codium" by prepare_vscode; change to "openflux".
 replace_postinst_package() {
   local f="$VSCODE_DIR/resources/linux/debian/postinst.template"
   [[ -f "$f" ]] || return 0
-  sed_i 's/ codium / opencode /g' "$f"
-  sed_i 's/^codium$/opencode/' "$f"
+  sed_i 's/ codium / openflux /g' "$f"
+  sed_i 's/^codium$/openflux/' "$f"
 }
 
 replace_in_file "$VSCODE_DIR/package.json"
@@ -57,4 +57,4 @@ for iss in "$VSCODE_DIR/build/win32/code.iss" "$VSCODE_DIR/build/win32/code-insi
   replace_in_file "$iss"
 done
 
-echo "OpenCode post-prepare done."
+echo "OpenFlux post-prepare done."

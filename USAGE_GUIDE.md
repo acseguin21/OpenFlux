@@ -1,19 +1,19 @@
-# OpenCode Usage Guide
+# OpenFlux Usage Guide
 
-## Step-by-Step: Using OpenCode
+## Step-by-Step: Using OpenFlux
 
 ### Step 1: Start the Backend Server
 
 Open a terminal and run:
 
 ```bash
-cd /path/to/opencode
+cd /path/to/openflux
 ./scripts/start_server.sh
 ```
 
 You should see:
 ```
-Starting OpenCode API server on http://localhost:8000
+Starting OpenFlux API server on http://localhost:8000
 INFO:     Uvicorn running on http://0.0.0.0:8000
 ```
 
@@ -24,7 +24,7 @@ INFO:     Uvicorn running on http://0.0.0.0:8000
 Open a **new terminal** and run:
 
 ```bash
-cd /path/to/opencode/extensions/opencode-ai-tools
+cd /path/to/openflux/extensions/openflux-ai-tools
 npm install
 npm run compile
 ```
@@ -35,7 +35,7 @@ This builds the TypeScript extension code.
 
 1. Open a Code-compatible editor in the project directory:
    ```bash
-   cd /path/to/opencode
+   cd /path/to/openflux
    code .   # or open the folder in your editor
    ```
 
@@ -49,7 +49,7 @@ This builds the TypeScript extension code.
 
 1. In the Extension Development Host window, open a workspace folder
 2. Press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`) to open the command palette
-3. Type: `OpenCode: Index Codebase`
+3. Type: `OpenFlux: Index Codebase`
 4. Press Enter
 5. Wait for indexing to complete (check the status bar)
 
@@ -61,14 +61,14 @@ ollama pull nomic-embed-text
 ### Step 5: Search Your Code
 
 1. Press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)
-2. Type: `OpenCode: Search Codebase`
+2. Type: `OpenFlux: Search Codebase`
 3. Enter a query like: "authentication" or "login function"
 4. Results will appear in a new markdown document
 
 ### Step 6: Use the Autonomous Agent
 
 1. Press `Ctrl+Shift+P` (Mac: `Cmd+Shift+P`)
-2. Type: `OpenCode: Start Autonomous Agent`
+2. Type: `OpenFlux: Start Autonomous Agent`
 3. Enter a goal like: "Add error handling to API routes"
 4. The agent will:
    - Plan the changes
@@ -82,19 +82,19 @@ ollama pull nomic-embed-text
 
 | Command | Shortcut | Description |
 |---------|----------|-------------|
-| `OpenCode: Index Codebase` | - | Index the current workspace |
-| `OpenCode: Search Codebase` | - | Search indexed code semantically |
-| `OpenCode: Start Autonomous Agent` | - | Run an AI agent to make code changes |
+| `OpenFlux: Index Codebase` | - | Index the current workspace |
+| `OpenFlux: Search Codebase` | - | Search indexed code semantically |
+| `OpenFlux: Start Autonomous Agent` | - | Run an AI agent to make code changes |
 
 ### Status Bar
 
-Look for the OpenCode icon in the status bar (bottom right). Click it to search.
+Look for the OpenFlux icon in the status bar (bottom right). Click it to search.
 
 ### Output Panel
 
 View agent execution logs:
 - Go to **View → Output**
-- Select "OpenCode Agent" from the dropdown
+- Select "OpenFlux Agent" from the dropdown
 
 ## Example Workflow
 
@@ -118,12 +118,12 @@ View agent execution logs:
 - Check: `curl http://localhost:8000` should return `{"status":"ok"}`
 
 ### "Indexer not initialized"
-- Run `OpenCode: Index Codebase` first before searching
+- Run `OpenFlux: Index Codebase` first before searching
 
 ### Extension doesn't appear
 - Make sure you pressed F5 in the main editor window (not the Extension Host)
 - Check the Debug Console for errors
-- Rebuild: `cd extensions/opencode-ai-tools && npm run compile`
+- Rebuild: `cd extensions/openflux-ai-tools && npm run compile`
 
 ### Ollama errors
 - Ensure Ollama is installed: `ollama --version`

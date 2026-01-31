@@ -1,6 +1,6 @@
 import axios, { AxiosInstance } from "axios";
 
-export class OpenCodeClient {
+export class OpenFluxClient {
     private client: AxiosInstance;
 
     constructor(baseURL: string) {

@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { OpenCodeClient } from "./client";
+import { OpenFluxClient } from "./client";
 
 export interface IndexingProviderOptions {
     onIndexingStart?: () => void;
@@ -8,7 +8,7 @@ export interface IndexingProviderOptions {
 
 export class IndexingProvider {
     constructor(
-        private client: OpenCodeClient,
+        private client: OpenFluxClient,
         private options: IndexingProviderOptions = {}
     ) {}
 
@@ -25,7 +25,7 @@ export class IndexingProvider {
         const isHealthy = await this.client.healthCheck();
         if (!isHealthy) {
             vscode.window.showErrorMessage(
-                "OpenCode API server is not running. Please start it with: ./scripts/start_server.sh"
+                "OpenFlux API server is not running. Please start it with: ./scripts/start_server.sh"
             );
             return;
         }
@@ -72,7 +72,7 @@ export class IndexingProvider {
         const isHealthy = await this.client.healthCheck();
         if (!isHealthy) {
             vscode.window.showErrorMessage(
-                "OpenCode API server is not running. Please start it with: ./scripts/start_server.sh"
+                "OpenFlux API server is not running. Please start it with: ./scripts/start_server.sh"
             );
             return;
         }

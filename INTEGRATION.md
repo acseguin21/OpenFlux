@@ -1,13 +1,13 @@
-# OpenCode Integration Guide
+# OpenFlux Integration Guide
 
-This document explains how the various components of OpenCode integrate together.
+This document explains how the various components of OpenFlux integrate together.
 
 ## Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │                    Editor Extension                          │
-│  (extensions/opencode-ai-tools/)                            │
+│  (extensions/openflux-ai-tools/)                            │
 │  - UI Commands                                               │
 │  - Status Bar                                                │
 │  - Search Results Display                                    │
@@ -51,7 +51,7 @@ from core.indexer import IndexingEngine
 
 indexer = IndexingEngine(
     workspace_path="/path/to/workspace",
-    vector_db_path="/path/to/.opencode/index",
+    vector_db_path="/path/to/.openflux/index",
     embedding_model="nomic-embed-text"
 )
 
@@ -106,25 +106,25 @@ result = orchestrator.run_loop("Add error handling to API routes", max_iteration
 python -m uvicorn core.api.server:app --host 0.0.0.0 --port 8000
 ```
 
-### 4. Editor Extension (`extensions/opencode-ai-tools/`)
+### 4. Editor Extension (`extensions/openflux-ai-tools/`)
 
 **Purpose**: User interface and editor integration
 
 **Commands**:
-- `opencode.indexCodebase` - Index current workspace
-- `opencode.searchCodebase` - Search codebase
-- `opencode.startAgent` - Start autonomous agent
+- `openflux.indexCodebase` - Index current workspace
+- `openflux.searchCodebase` - Search codebase
+- `openflux.startAgent` - Start autonomous agent
 
 **Configuration**:
-- `opencode.apiUrl` - API server URL
-- `opencode.useOllama` - Use local Ollama models
-- `opencode.embeddingModel` - Embedding model name
+- `openflux.apiUrl` - API server URL
+- `openflux.useOllama` - Use local Ollama models
+- `openflux.embeddingModel` - Embedding model name
 
 ## Integration Flow
 
 ### Indexing Flow
 
-1. User runs `opencode.indexCodebase` command
+1. User runs `openflux.indexCodebase` command
 2. Extension sends POST to `/api/index` with workspace path
 3. Backend creates `IndexingEngine` instance
 4. Engine scans workspace, parses files with Tree-sitter
@@ -134,7 +134,7 @@ python -m uvicorn core.api.server:app --host 0.0.0.0 --port 8000
 
 ### Search Flow
 
-1. User runs `opencode.searchCodebase` command
+1. User runs `openflux.searchCodebase` command
 2. Extension prompts for query
 3. Extension sends POST to `/api/search` with query
 4. Backend generates query embedding
@@ -143,7 +143,7 @@ python -m uvicorn core.api.server:app --host 0.0.0.0 --port 8000
 
 ### Agent Flow
 
-1. User runs `opencode.startAgent` command
+1. User runs `openflux.startAgent` command
 2. Extension prompts for goal
 3. Extension sends POST to `/api/agent/execute`
 4. Orchestrator plans task (with optional context from indexer)

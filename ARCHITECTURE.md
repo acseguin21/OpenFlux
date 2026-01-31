@@ -1,4 +1,4 @@
-# OpenCode Architecture & Technical Strategy
+# OpenFlux Architecture & Technical Strategy
 
 To build a standalone AI IDE, we leverage the "Giant's Shoulders" of existing open-source software while adding a unique layer of **Agentic Orchestration** and **Superior Context**.
 
@@ -22,7 +22,7 @@ Instead of building a model from scratch, we use a **Multi-Model Orchestrator**.
 
 ## 3. The Context System (Advanced RAG)
 
-This is where OpenCode will win. We move beyond simple vector search.
+This is where OpenFlux will win. We move beyond simple vector search.
 
 ### Graph-Based Retrieval:
 - **Tree-sitter**: We use tree-sitter to parse code into ASTs (Abstract Syntax Trees).
@@ -31,7 +31,7 @@ This is where OpenCode will win. We move beyond simple vector search.
 
 ## 4. The Agentic Loop (Autonomous SWE)
 
-OpenCode will integrate a "Shadow Terminal" and "Test Runner."
+OpenFlux will integrate a "Shadow Terminal" and "Test Runner."
 
 1. **User Goal**: "Refactor the login logic."
 2. **Planner**: AI breaks the task into file-level edits.
